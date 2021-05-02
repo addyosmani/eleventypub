@@ -7,13 +7,6 @@ const epubFolder = 'build/epub/EPUB/**/';
 // pretty-print the xml files
 function xml() {
     return src(epubFolder + '*.{opf,xhtml}', { base: './' })
-        .pipe(prettyData({
-          type: 'prettify',
-          preserveComments: true,
-          extensions: {
-            'opf': 'xml',
-            'xhtml': 'xml',
-          }}))
         .pipe(dest('./'));
 }
 function css() {

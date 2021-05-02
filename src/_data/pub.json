@@ -8,6 +8,6 @@
     "page": "toc/index.xhtml"
   },
   "readingOrder": [
-    "intro", "chapter1", "end"
+    "intro", "chapter1", "end", "introduction","hooks"
   ]
 }

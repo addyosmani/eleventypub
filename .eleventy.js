@@ -1,8 +1,11 @@
 const path = require('path');
 const mime = require('mime');
 const nunjucks = require('nunjucks');
+const mdxPlugin = require("./third_party/mdx-plugin");
+
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(mdxPlugin);
   eleventyConfig.addPassthroughCopy("src/resources");
 
   let nunjucksEnv = new nunjucks.Environment(

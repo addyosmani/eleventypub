@@ -1,0 +1,87 @@
+---
+title: Hooks Pattern
+---
+
+Sample content.
+
+> import { IFrame } from "../components/IFrame";
+
+## Class components
+
+Before Hooks were introduced in React, we had to use class components in order to add state and lifecycle methods to components. A typical class component in React can look something like:
+
+```js/
+class MyComponent extends React.Component {
+  /* Adding state and binding custom methods */
+  constructor() {
+    super()
+    this.state = { ... }
+
+    this.customMethodOne = this.customMethodOne.bind(this)
+    this.customMethodTwo = this.customMethodTwo.bind(this)
+  }
+
+  /* Lifecycle Methods */
+  componentDidMount() { ...}
+  componentWillUnmount() { ... }
+
+  /* Custom methods */
+  customMethodOne() { ... }
+  customMethodTwo() { ... }
+
+  render() { return { ... }}
+}
+
+```
+
+### Understanding ES2015 classes
+
+Since class components were the only component that could handle state and lifecycle methods before React Hooks, we often ended up having to refactor functional components into a class components, in order to add the extra functionality.
+
+In this example, we have a simple `div` that functions as a button.
+
+```js/
+function Button() {
+  return <div className="btn">disabled</div>;
+}
+```
+
+Instead of always displaying `disabled`, we want to change it to `enabled` when the user clicks on the button, and add some extra CSS styling to the button when that happens.
+
+In order to do that, we need to add state to the component in order to know whether the status is `enabled` or `disabled`. This means that we'd have to refactor the functional component entirely, and make it a class component that keeps track of the button's state.
+
+```js/
+export default class Button extends React.Component {
+  constructor() {
+    super();
+    this.state = { enabled: false };
+  }
+
+  render() {
+    const { enabled } = this.state;
+    const btnText = enabled ? "enabled" : "disabled";
+
+    return (
+      <div
+        className={`btn enabled-${enabled}`}
+        onClick={() => this.setState({ enabled: !enabled })}
+      >
+        {btnText}
+      </div>
+    );
+  }
+}
+```
+
+<IFrame
+  src="https://codesandbox.io/embed/nervous-hoover-oicu6?fontsize=14&hidenavigation=1&module=%2Fsrc%2FInput.js&theme=dark"
+  title="nervous-hoover-oicu6"
+/>
+
+
+Perfect! We can use this custom hook in our input application. Let's log to the console whenever the user presses the `q`, `l` or `w` key.
+
+<IFrame
+  src="https://codesandbox.io/embed/billowing-pine-xplez?expanddevtools=1&fontsize=14&hidenavigation=1&module=%2Fsrc%2FInput.js&theme=dark"
+  title="billowing-pine-xplez"
+/>

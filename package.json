@@ -20,13 +20,12 @@
     "build": "./node_modules/.bin/eleventy build",
     "postbuild": "node postbuild.js",
     "gulp": "./node_modules/.bin/gulp",
-    "pretty-xml": "./node_modules/.bin/gulp xml",
     "epubcheck": "java -jar ./lib/epubcheck-4.2.4/epubcheck.jar --mode exp build/epub",
     "save": "java -jar ./lib/epubcheck-4.2.4/epubcheck.jar --mode exp --save build/epub",
     "rename": "node rename.js",
     "ace": "./node_modules/.bin/ace --force --outdir build/report build/epub",
     "all": "./node_modules/.bin/npm-run-all build gulp save ace rename",
-    "all-no-stylelint": "./node_modules/.bin/npm-run-all build pretty-xml save ace rename"
+    "all-no-stylelint": "./node_modules/.bin/npm-run-all build save ace rename"
   },
   "license": "MIT",
   "dependencies": {
@@ -41,8 +40,22 @@
     "mime": "^2.4.6",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
+    "babel-loader": "^8.1.0",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "memory-fs": "^0.5.0",
     "sanitize-filename": "^1.6.3",
     "stylelint": "^13.6.0",
-    "stylelint-config-recommended": "^3.0.0"
+    "stylelint-config-recommended": "^3.0.0",
+    "@mdx-js/loader": "^1.6.16",
+    "@mdx-js/mdx": "^1.6.7",
+    "@mdx-js/runtime": "^1.6.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "terser-webpack-plugin": "^4.1.0",
+    "webpack": "^4.44.1",
+    "remark-frontmatter": "^2.0.0",
+    "require-from-string": "^2.0.2"
   }
 }
